@@ -1,0 +1,362 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>使用express搭建nodejs项目 - CleverFan</title>
+        <meta charset="utf-8">
+        <meta name="description" content="Vue.js - Intuitive, Fast and Composable MVVM for building interactive interfaces.">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="使用express搭建nodejs项目 - CleverFan">
+        <meta property="og:description" content="Vue.js - Intuitive, Fast and Composable MVVM for building interactive interfaces.">
+        <meta property="og:image" content="https://vuefe.cn/images/logo.png">
+
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:title" content="使用express搭建nodejs项目 - CleverFan">
+        <meta name="twitter:description" content="Vue.js - Intuitive, Fast and Composable MVVM for building interactive interfaces.">
+        <meta name="twitter:image" content="https://vuefe.cn/images/logo.png">
+
+        <link rel="icon" href="/images/logo.png" type="image/x-icon">
+
+        <!--<link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto Mono' rel='stylesheet' type='text/css'>-->
+        <!--<link href='//fonts.googleapis.com/css?family=Dosis:500&text=Vue.js' rel='stylesheet' type='text/css'>-->
+
+        <!-- main page styles -->
+        <link rel="stylesheet" href="/css/page.css">
+
+        <!-- this needs to be loaded before guide's inline scripts -->
+        <script src="/js/vue.js"></script>
+        <script>window.PAGE_TYPE = "nodejs"</script>
+    </head>
+    <body class="docs">        <div id="mobile-bar" >
+            <a class="menu-button"></a>
+            <a class="logo" href="/"></a>
+        </div>
+        <div id="header">
+  <a id="logo" href="/">
+    <img src="/images/logo.png">
+    <span>CleverFan</span>
+  </a>
+  <span style="
+    position: absolute;
+    top: 100%;
+    left: 60px;
+    padding: 0 10px;
+    background: #ef9f00;
+    border-radius: 3px;
+    margin-top: -15px;
+    line-height: 30px;
+    color: white;
+    font-weight: 400;
+    letter-spacing: 1px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.3);
+  ">
+  有问题请联系:chengfan818@gmail.com
+  </span>
+  <ul id="nav">
+    <li>
+  <form id="search-form">
+    <input type="text" id="search-query-nav" class="search-query st-default-search-input">
+  </form>
+</li>
+<li><a href="/study/java/" class="nav-link">java</a></li>
+<li><a href="/study/linux/" class="nav-link">linux</a></li>
+<li><a href="/study/nodejs/" class="nav-link current">nodejs</a></li>
+<li><a href="/about/" class="nav-link">参与贡献</a></li>
+<li class="nav-dropdown-container">
+  <a class="nav-link">其他</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://github.com/CleverFan" class="nav-link" target="_blank">GitHub</a></li>
+    <li><a href="http://blog.csdn.net/qq_31655965" class="nav-link" target="_blank">csdn</a></li>
+    <li><a href="http://www.improvecfan.cn" class="nav-link" target="_blank">博客</a></li>
+
+  </ul>
+</li>
+
+<!--<li class="nav-dropdown-container ecosystem">
+  <a class="nav-link">生态系统</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><h4>帮助</h4></li>
+    <li><ul>
+      <li><a href="http://forum.vuejs.org" class="nav-link" target="_blank">论坛</a></li>
+      <li><a href="https://gitter.im/vuejs/vue" class="nav-link" target="_blank">聊天室</a></li>
+      <li><a href="https://github.com/vuejs-templates" class="nav-link" target="_blank">模板</a></li>
+    </ul></li>
+    <li><h4>信息</h4></li>
+    <li><ul>
+      <li><a href="https://twitter.com/vuejs" class="nav-link" target="_blank">Twitter</a></li>
+      <li><a href="https://medium.com/the-vue-point" class="nav-link" target="_blank">博客</a></li>
+      <li><a href="https://vuejobs.com/?ref=vuejs" class="nav-link" target="_blank">工作</a></li>
+    </ul></li>
+    <li><h4>核心插件</h4></li>
+    <li><ul>
+      <li><a href="https://router.vuejs.org/" class="nav-link" target="_blank">Vue Router</a></li>
+      <li><a href="https://vuex.vuejs.org/" class="nav-link" target="_blank">Vuex</a></li>
+    </ul></li>
+    <li><h4>资源列表</h4></li>
+    <li><ul>
+      <li><a href="https://github.com/vuejs" class="nav-link" target="_blank">官方仓库</a></li>
+      <li><a href="https://github.com/vuejs/awesome-vue" class="nav-link" target="_blank">Vue 资源</a></li>
+    </ul></li>
+    <li><h4>其它</h4></li>
+    <li><a href="https://webpack.vuefe.cn" target="_blank">webpack</a></li>
+  </ul>
+</li>-->
+<!--<li class="nav-dropdown-container language">
+  <a class="nav-link">Translations</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://cn.vuejs.org/" class="nav-link" target="_blank">中文</a></li>
+    <li><a href="https://jp.vuejs.org/" class="nav-link" target="_blank">日本語</a></li>
+    <li><a href="https://ru.vuejs.org/" class="nav-link" target="_blank">Русский</a></li>
+  </ul>
+</li>
+-->
+  </ul>
+</div>
+
+        
+            <div id="main" class="fix-sidebar">
+                
+                    
+    <div class="sidebar">
+    <ul class="main-menu">
+        <li>
+  <form id="search-form">
+    <input type="text" id="search-query-sidebar" class="search-query st-default-search-input">
+  </form>
+</li>
+<li><a href="/study/java/" class="nav-link">java</a></li>
+<li><a href="/study/linux/" class="nav-link">linux</a></li>
+<li><a href="/study/nodejs/" class="nav-link current">nodejs</a></li>
+<li><a href="/about/" class="nav-link">参与贡献</a></li>
+<li class="nav-dropdown-container">
+  <a class="nav-link">其他</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://github.com/CleverFan" class="nav-link" target="_blank">GitHub</a></li>
+    <li><a href="http://blog.csdn.net/qq_31655965" class="nav-link" target="_blank">csdn</a></li>
+    <li><a href="http://www.improvecfan.cn" class="nav-link" target="_blank">博客</a></li>
+
+  </ul>
+</li>
+
+<!--<li class="nav-dropdown-container ecosystem">
+  <a class="nav-link">生态系统</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><h4>帮助</h4></li>
+    <li><ul>
+      <li><a href="http://forum.vuejs.org" class="nav-link" target="_blank">论坛</a></li>
+      <li><a href="https://gitter.im/vuejs/vue" class="nav-link" target="_blank">聊天室</a></li>
+      <li><a href="https://github.com/vuejs-templates" class="nav-link" target="_blank">模板</a></li>
+    </ul></li>
+    <li><h4>信息</h4></li>
+    <li><ul>
+      <li><a href="https://twitter.com/vuejs" class="nav-link" target="_blank">Twitter</a></li>
+      <li><a href="https://medium.com/the-vue-point" class="nav-link" target="_blank">博客</a></li>
+      <li><a href="https://vuejobs.com/?ref=vuejs" class="nav-link" target="_blank">工作</a></li>
+    </ul></li>
+    <li><h4>核心插件</h4></li>
+    <li><ul>
+      <li><a href="https://router.vuejs.org/" class="nav-link" target="_blank">Vue Router</a></li>
+      <li><a href="https://vuex.vuejs.org/" class="nav-link" target="_blank">Vuex</a></li>
+    </ul></li>
+    <li><h4>资源列表</h4></li>
+    <li><ul>
+      <li><a href="https://github.com/vuejs" class="nav-link" target="_blank">官方仓库</a></li>
+      <li><a href="https://github.com/vuejs/awesome-vue" class="nav-link" target="_blank">Vue 资源</a></li>
+    </ul></li>
+    <li><h4>其它</h4></li>
+    <li><a href="https://webpack.vuefe.cn" target="_blank">webpack</a></li>
+  </ul>
+</li>-->
+<!--<li class="nav-dropdown-container language">
+  <a class="nav-link">Translations</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://cn.vuejs.org/" class="nav-link" target="_blank">中文</a></li>
+    <li><a href="https://jp.vuejs.org/" class="nav-link" target="_blank">日本語</a></li>
+    <li><a href="https://ru.vuejs.org/" class="nav-link" target="_blank">Русский</a></li>
+  </ul>
+</li>
+-->
+    </ul>
+    <div class="list">
+        <div class="main-sponsor">
+            <span>赞助者</span><br>
+            <a href="#" target="_blank"
+                style="background-color: #f3f3f3; padding: 10px 0">
+                <img src="/images/github.png">
+            </a>
+        </div>
+        <a class="become-backer" href="/support-me">
+            成为赞助者
+        </a>
+        <h2>
+            
+            <!---->
+                <!--<select class="version-select">-->
+                    <!--<option value="SELF" selected>2.0</option>-->
+                    <!--<option value="v1">1.0</option>-->
+                    <!--<option value="012">0.12</option>-->
+                    <!--<option value="011">0.11</option>-->
+                <!--</select>-->
+            <!---->
+        </h2>
+        <ul class="menu-root">
+            
+                
+
+                
+                
+                <li>
+                    <a href="/study/nodejs/index.html" class="sidebar-link">开始</a>
+                </li>
+            
+                
+
+                
+                
+                <li>
+                    <a href="/study/nodejs/one.html" class="sidebar-link current">使用express搭建nodejs项目</a>
+                </li>
+            
+            
+        </ul>
+    </div>
+</div>
+
+
+<div class="content nodejs with-sidebar ">
+    
+      <h1>使用express搭建nodejs项目</h1>
+    
+    
+    <p>最近对nodejs比较感兴趣，所以打算学习一下。但是在学习过程中遇到了一些麻烦，现在将这个过程与大家分享一下。</p>
+<h2 id="环境"><a href="#环境" class="headerlink" title="环境"></a>环境</h2><ul>
+<li>系统 ubutu16.04 （win10下的虚拟机）</li>
+<li>nodejs版本 4.4.7</li>
+<li>npm版本 2.15.8</li>
+</ul>
+<blockquote>
+<p>nodejs  github主页：<a href="https://github.com/nodejs/node" target="_blank" rel="external">https://github.com/nodejs/node</a><br>nodejs  官网：<a href="https://nodejs.org" target="_blank" rel="external">https://nodejs.org</a><br>nodejs 中文社区：<a href="https://cnodejs.org" target="_blank" rel="external">https://cnodejs.org</a><br>express github主页：<a href="https://github.com/expressjs/express" target="_blank" rel="external">https://github.com/expressjs/express</a></p>
+</blockquote>
+<h2 id="第一步，安装nodejs"><a href="#第一步，安装nodejs" class="headerlink" title="第一步，安装nodejs"></a>第一步，安装nodejs</h2><p><strong>windows</strong>请直接到上诉官网中下载安装即可，现在安装nodejs会自动将npm也安装好。</p>
+<p><strong>Ubuntu系统</strong>：<br>首先确保系统安装来python,gcc,g++,如果没有则安装：<br>（一般Ubuntu都已默认安装）</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">$ sudo apt-get install python </div><div class="line"></div><div class="line">$ sudo apt-get install build-essential </div><div class="line"></div><div class="line">$ sudo apt-get install gcc </div><div class="line"></div><div class="line">$ sudo apt-get install g++</div></pre></td></tr></table></figure>
+<p>确保都安装了之后，从nodeJS官网下载最新源代码包：node-v4.4.7.tar.gz</p>
+<p>解压：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">$ tar -zxf node-v4<span class="number">.4</span><span class="number">.7</span>.tar.gz </div><div class="line"></div><div class="line">$ cd node-v4<span class="number">.4</span><span class="number">.7</span></div></pre></td></tr></table></figure>
+<p>默认安装： </p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">$ ./configure </div><div class="line"></div><div class="line">$ make </div><div class="line"></div><div class="line">$ sudo make install</div></pre></td></tr></table></figure>
+<p>选择目录方式安装： </p>
+<figure class="highlight"><table><tr><td class="code"><pre><div class="line">$ ./configure –prefix=/usr/node </div><div class="line"></div><div class="line">$ make -j 5 #5=CPU核数+1 </div><div class="line"></div><div class="line">$ sudo make install</div></pre></td></tr></table></figure>
+<blockquote>
+<p>当然，你也可以通过linux包管理器安装：<br><code>apt get install nodejs -g</code><br><code>apt get install npm -g</code><br>但是个人不建议这么做，因为有时候会莫名其妙的出问题，还是直接编译源码比较实在（编译过程需要一些时间）。</p>
+</blockquote>
+<p>接下来通过查看版本确认已经安装成功：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">$ node -v</div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">$ npm -v</div></pre></td></tr></table></figure>
+<h2 id="第二步，安装express"><a href="#第二步，安装express" class="headerlink" title="第二步，安装express"></a>第二步，安装express</h2><p><strong>Windows</strong>：打开Node.js command prompt，输入：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">npm install express -g</div></pre></td></tr></table></figure>
+<blockquote>
+<p>-g是全局安装，在任何地方打开命令行都可以使用相应命令</p>
+</blockquote>
+<p><strong>Ubuntu</strong> 打开终端，输入：</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">$ sudo npm install express -g</div></pre></td></tr></table></figure>
+<blockquote>
+<p>请务必使用管理员权限安装，否则会安装失败</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">$ sudo npm install -g express-generator@<span class="number">4</span></div></pre></td></tr></table></figure>
+<blockquote>
+<p>express4.0之后把创建一个APP的功能分离出来为express-generator，所以必须得安装它，否则没法正常使用express</p>
+</blockquote>
+<p>通过输入‘express -v’确认安装成功。（有些情况无法查看版本，但是可以正常使用）</p>
+<h2 id="使用express建一个demo"><a href="#使用express建一个demo" class="headerlink" title="使用express建一个demo"></a>使用express建一个demo</h2><ol>
+<li>打开一个用来放源码的目录，输入<code>$ express nodetest -e</code>  </li>
+</ol>
+<blockquote>
+<p>新建一个名为nodetest的项目，使用ejs作为模板。 ejs （Embedded JavaScript） 是一个标签替换引擎，其语法与 ASP、PHP 相似，易于学习，目前被广泛应用。Express 默认提供的引擎是 jade，它颠覆了传统的模板引擎，制定了一套完整的语法用来生成 HTML 的每个标签结构，功能强大但不易学习。Express 在初始化一个项目的时候需要指定模板引擎，默认支持Jade和ejs。</p>
+</blockquote>
+<ol>
+<li><code>$ cd nodetest &amp;&amp; npm install</code></li>
+</ol>
+<blockquote>
+<p>进去项目文件夹，并安装所需要的依赖。无参数的 npm install 的功能就是 检查当前目录下的 package.json，并自动安装所有指定的依赖。 </p>
+</blockquote>
+<ol>
+<li><code>$ npm start</code></li>
+</ol>
+<blockquote>
+<p>启动项目。接下来，打开浏览器，输入地址 <a href="http://localhost:3000，你就可以看到一个简单的" target="_blank" rel="external">http://localhost:3000，你就可以看到一个简单的</a> Welcome to Express 页面了。</p>
+<p>express以前的版本，启动项目的命令是<br><code>\$ node app.js</code><br>但是，使用最新版的这样是无法启动的，正确的启动命令是<br><code>$ npm start</code></p>
+</blockquote>
+<p>市面上讲nodejs的书籍并不多，而且node的版本更新太快，好多书上的例子用最新版的node已经无法运行了，所以，不要觉得书上的都是正确的，遇到问题多google。</p>
+<blockquote>
+<p>附nodejs教程，中文文档等<br><a href="http://download.csdn.net/detail/qq_31655965/9603069" target="_blank" rel="external">http://download.csdn.net/detail/qq_31655965/9603069</a><br><a href="http://download.csdn.net/detail/qq_31655965/9603064" target="_blank" rel="external">http://download.csdn.net/detail/qq_31655965/9603064</a></p>
+</blockquote>
+
+
+      <div class="guide-links">
+        
+        <span>← <a href="/study/nodejs/index.html">开始</a></span>
+        
+        
+    </div>
+
+    <div class="footer">
+      发现错误？想参与编辑？
+      <a href="https://github.com/CleverFan/CleverFan.github.io/blob/2.0-cn/src/study/nodejs/one.md" target="_blank">
+        在 Github 上编辑此页！
+      </a>
+    </div>
+</div>
+
+                
+            </div>
+            <script src="/js/smooth-scroll.min.js"></script>
+        
+
+        <!-- main custom script for sidebars, version selects etc. -->
+        <script src="/js/common.js"></script>
+
+        <!-- ga -->
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-46852172-1', 'vuefe.cn');
+          ga('send', 'pageview');
+        </script>
+
+        <!-- search -->
+        <link href="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/css/search.css">
+        <script src="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
+        <script>
+//        [
+//          '#search-query-nav',
+//          '#search-query-sidebar'
+//        ].forEach(function (selector) {
+//          if (!document.querySelector(selector)) return
+//          // search index defaults to v2
+//          var match = window.location.pathname.match(/^\/(v\d+)/)
+//          var version = match ? match[1] : 'v2'
+//          docsearch({
+//            appId: 'BH4D9OD16A',
+//            apiKey: '85cc3221c9f23bfbaa4e3913dd7625ea',
+//            indexName: 'vuejs',
+//            inputSelector: selector,
+//            algoliaOptions: { facetFilters: ["version:" + version] }
+//          })
+//        })
+        </script>
+
+        <!-- fastclick -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          FastClick.attach(document.body)
+        }, false)
+        </script>
+    </body>
+</html>

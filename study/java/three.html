@@ -1,0 +1,452 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>继承 - CleverFan</title>
+        <meta charset="utf-8">
+        <meta name="description" content="Vue.js - Intuitive, Fast and Composable MVVM for building interactive interfaces.">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="继承 - CleverFan">
+        <meta property="og:description" content="Vue.js - Intuitive, Fast and Composable MVVM for building interactive interfaces.">
+        <meta property="og:image" content="https://vuefe.cn/images/logo.png">
+
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:title" content="继承 - CleverFan">
+        <meta name="twitter:description" content="Vue.js - Intuitive, Fast and Composable MVVM for building interactive interfaces.">
+        <meta name="twitter:image" content="https://vuefe.cn/images/logo.png">
+
+        <link rel="icon" href="/images/logo.png" type="image/x-icon">
+
+        <!--<link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto Mono' rel='stylesheet' type='text/css'>-->
+        <!--<link href='//fonts.googleapis.com/css?family=Dosis:500&text=Vue.js' rel='stylesheet' type='text/css'>-->
+
+        <!-- main page styles -->
+        <link rel="stylesheet" href="/css/page.css">
+
+        <!-- this needs to be loaded before guide's inline scripts -->
+        <script src="/js/vue.js"></script>
+        <script>window.PAGE_TYPE = "javaImprove"</script>
+    </head>
+    <body class="docs">        <div id="mobile-bar" >
+            <a class="menu-button"></a>
+            <a class="logo" href="/"></a>
+        </div>
+        <div id="header">
+  <a id="logo" href="/">
+    <img src="/images/logo.png">
+    <span>CleverFan</span>
+  </a>
+  <span style="
+    position: absolute;
+    top: 100%;
+    left: 60px;
+    padding: 0 10px;
+    background: #ef9f00;
+    border-radius: 3px;
+    margin-top: -15px;
+    line-height: 30px;
+    color: white;
+    font-weight: 400;
+    letter-spacing: 1px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.3);
+  ">
+  有问题请联系:chengfan818@gmail.com
+  </span>
+  <ul id="nav">
+    <li>
+  <form id="search-form">
+    <input type="text" id="search-query-nav" class="search-query st-default-search-input">
+  </form>
+</li>
+<li><a href="/study/java/" class="nav-link current">java</a></li>
+<li><a href="/study/linux/" class="nav-link">linux</a></li>
+<li><a href="/study/nodejs/" class="nav-link">nodejs</a></li>
+<li><a href="/about/" class="nav-link">参与贡献</a></li>
+<li class="nav-dropdown-container">
+  <a class="nav-link">其他</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://github.com/CleverFan" class="nav-link" target="_blank">GitHub</a></li>
+    <li><a href="http://blog.csdn.net/qq_31655965" class="nav-link" target="_blank">csdn</a></li>
+    <li><a href="http://www.improvecfan.cn" class="nav-link" target="_blank">博客</a></li>
+
+  </ul>
+</li>
+
+<!--<li class="nav-dropdown-container ecosystem">
+  <a class="nav-link">生态系统</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><h4>帮助</h4></li>
+    <li><ul>
+      <li><a href="http://forum.vuejs.org" class="nav-link" target="_blank">论坛</a></li>
+      <li><a href="https://gitter.im/vuejs/vue" class="nav-link" target="_blank">聊天室</a></li>
+      <li><a href="https://github.com/vuejs-templates" class="nav-link" target="_blank">模板</a></li>
+    </ul></li>
+    <li><h4>信息</h4></li>
+    <li><ul>
+      <li><a href="https://twitter.com/vuejs" class="nav-link" target="_blank">Twitter</a></li>
+      <li><a href="https://medium.com/the-vue-point" class="nav-link" target="_blank">博客</a></li>
+      <li><a href="https://vuejobs.com/?ref=vuejs" class="nav-link" target="_blank">工作</a></li>
+    </ul></li>
+    <li><h4>核心插件</h4></li>
+    <li><ul>
+      <li><a href="https://router.vuejs.org/" class="nav-link" target="_blank">Vue Router</a></li>
+      <li><a href="https://vuex.vuejs.org/" class="nav-link" target="_blank">Vuex</a></li>
+    </ul></li>
+    <li><h4>资源列表</h4></li>
+    <li><ul>
+      <li><a href="https://github.com/vuejs" class="nav-link" target="_blank">官方仓库</a></li>
+      <li><a href="https://github.com/vuejs/awesome-vue" class="nav-link" target="_blank">Vue 资源</a></li>
+    </ul></li>
+    <li><h4>其它</h4></li>
+    <li><a href="https://webpack.vuefe.cn" target="_blank">webpack</a></li>
+  </ul>
+</li>-->
+<!--<li class="nav-dropdown-container language">
+  <a class="nav-link">Translations</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://cn.vuejs.org/" class="nav-link" target="_blank">中文</a></li>
+    <li><a href="https://jp.vuejs.org/" class="nav-link" target="_blank">日本語</a></li>
+    <li><a href="https://ru.vuejs.org/" class="nav-link" target="_blank">Русский</a></li>
+  </ul>
+</li>
+-->
+  </ul>
+</div>
+
+        
+            <div id="main" class="fix-sidebar">
+                
+                    
+    <div class="sidebar">
+    <ul class="main-menu">
+        <li>
+  <form id="search-form">
+    <input type="text" id="search-query-sidebar" class="search-query st-default-search-input">
+  </form>
+</li>
+<li><a href="/study/java/" class="nav-link current">java</a></li>
+<li><a href="/study/linux/" class="nav-link">linux</a></li>
+<li><a href="/study/nodejs/" class="nav-link">nodejs</a></li>
+<li><a href="/about/" class="nav-link">参与贡献</a></li>
+<li class="nav-dropdown-container">
+  <a class="nav-link">其他</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://github.com/CleverFan" class="nav-link" target="_blank">GitHub</a></li>
+    <li><a href="http://blog.csdn.net/qq_31655965" class="nav-link" target="_blank">csdn</a></li>
+    <li><a href="http://www.improvecfan.cn" class="nav-link" target="_blank">博客</a></li>
+
+  </ul>
+</li>
+
+<!--<li class="nav-dropdown-container ecosystem">
+  <a class="nav-link">生态系统</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><h4>帮助</h4></li>
+    <li><ul>
+      <li><a href="http://forum.vuejs.org" class="nav-link" target="_blank">论坛</a></li>
+      <li><a href="https://gitter.im/vuejs/vue" class="nav-link" target="_blank">聊天室</a></li>
+      <li><a href="https://github.com/vuejs-templates" class="nav-link" target="_blank">模板</a></li>
+    </ul></li>
+    <li><h4>信息</h4></li>
+    <li><ul>
+      <li><a href="https://twitter.com/vuejs" class="nav-link" target="_blank">Twitter</a></li>
+      <li><a href="https://medium.com/the-vue-point" class="nav-link" target="_blank">博客</a></li>
+      <li><a href="https://vuejobs.com/?ref=vuejs" class="nav-link" target="_blank">工作</a></li>
+    </ul></li>
+    <li><h4>核心插件</h4></li>
+    <li><ul>
+      <li><a href="https://router.vuejs.org/" class="nav-link" target="_blank">Vue Router</a></li>
+      <li><a href="https://vuex.vuejs.org/" class="nav-link" target="_blank">Vuex</a></li>
+    </ul></li>
+    <li><h4>资源列表</h4></li>
+    <li><ul>
+      <li><a href="https://github.com/vuejs" class="nav-link" target="_blank">官方仓库</a></li>
+      <li><a href="https://github.com/vuejs/awesome-vue" class="nav-link" target="_blank">Vue 资源</a></li>
+    </ul></li>
+    <li><h4>其它</h4></li>
+    <li><a href="https://webpack.vuefe.cn" target="_blank">webpack</a></li>
+  </ul>
+</li>-->
+<!--<li class="nav-dropdown-container language">
+  <a class="nav-link">Translations</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://cn.vuejs.org/" class="nav-link" target="_blank">中文</a></li>
+    <li><a href="https://jp.vuejs.org/" class="nav-link" target="_blank">日本語</a></li>
+    <li><a href="https://ru.vuejs.org/" class="nav-link" target="_blank">Русский</a></li>
+  </ul>
+</li>
+-->
+    </ul>
+    <div class="list">
+        <div class="main-sponsor">
+            <span>赞助者</span><br>
+            <a href="#" target="_blank"
+                style="background-color: #f3f3f3; padding: 10px 0">
+                <img src="/images/github.png">
+            </a>
+        </div>
+        <a class="become-backer" href="/support-me">
+            成为赞助者
+        </a>
+        <h2>
+            
+            <!---->
+                <!--<select class="version-select">-->
+                    <!--<option value="SELF" selected>2.0</option>-->
+                    <!--<option value="v1">1.0</option>-->
+                    <!--<option value="012">0.12</option>-->
+                    <!--<option value="011">0.11</option>-->
+                <!--</select>-->
+            <!---->
+        </h2>
+        <ul class="menu-root">
+            
+                
+
+                
+                
+                <li>
+                    <a href="/study/java/index.html" class="sidebar-link">开始</a>
+                </li>
+            
+                
+
+                
+                
+                <li>
+                    <a href="/study/java/zero.html" class="sidebar-link">万物皆对象（上）</a>
+                </li>
+            
+                
+
+                
+                
+                <li>
+                    <a href="/study/java/one.html" class="sidebar-link">万物皆对象(下)</a>
+                </li>
+            
+                
+
+                
+                
+                <li>
+                    <a href="/study/java/two.html" class="sidebar-link">封装</a>
+                </li>
+            
+                
+
+                
+                
+                <li>
+                    <a href="/study/java/three.html" class="sidebar-link current">继承</a>
+                </li>
+            
+            
+        </ul>
+    </div>
+</div>
+
+
+<div class="content javaImprove with-sidebar three-javaImprove">
+    
+      <h1>继承</h1>
+    
+    
+    <blockquote>
+<p>学习一个新知识的第一步，就是要知道它是什么，然后要知道为什么要用它，最后要知道如何使用它。这篇文章，我们重新认识一下java中的继承。</p>
+</blockquote>
+<h2 id="继承是个什么东西"><a href="#继承是个什么东西" class="headerlink" title="继承是个什么东西"></a><strong>继承是个什么东西</strong></h2><p>我们先来看一下上一篇文章中的代码：</p>
+<blockquote>
+<p><img src="http://img.blog.csdn.net/20161129160404250" alt="这里写图片描述"><img src="http://img.blog.csdn.net/20161129160417453" alt="这里写图片描述"> </p>
+</blockquote>
+<p> 你会发现，这两个类中都有name属性，都有marry方法。一个人，不可能只有名字吧。他还有年龄，地址，手机号码，身份证号码，身高，体重巴拉巴拉的。除了男人和女人，还有小孩，老人，教师。。。</p>
+<p>如果我们每个类里都写一遍name，age。。。也许你还没写完程序，自己就先累死了。不用我说，大家也应该知道了，没错，我们需要继承的帮助。</p>
+<p>我们把相同的属性抽取出来，定义一个新的类Person，然后让男人，女人都去继承它，从而获得Person的属性，这样，就大大简化了我们的工作。</p>
+<p>我们来尝试一下。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">//父类</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</div><div class="line">    <span class="keyword">protected</span> String name;</div><div class="line">    <span class="keyword">protected</span> <span class="keyword">int</span> age;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span>&#123;</div><div class="line">        System.out.println(<span class="string">"i am eating"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">//Man类 继承Person</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Man</span> <span class="keyword">extends</span> <span class="title">Person</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> hasBeard;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">showMan</span><span class="params">()</span></span>&#123;</div><div class="line">        System.out.println(<span class="string">"i am a man"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isHasBeard</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> hasBeard;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">//woman类 继承Person</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Woman</span> <span class="keyword">extends</span> <span class="title">Person</span></span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> hasLongHair;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">shouWoman</span><span class="params">()</span></span>&#123;</div><div class="line">        System.out.println(<span class="string">"i am a woman"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">boolean</span> <span class="title">isHasLongHair</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> hasLongHair;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>简单的继承我想大家都懂，我就不多说占用篇幅了。</p>
+<h2 id="继承的特点"><a href="#继承的特点" class="headerlink" title="继承的特点"></a><strong>继承的特点</strong></h2><p>我们已经知道了什么是继承，那么继承有没有什么限制呢？</p>
+<h3 id="1-java中只支持单继承"><a href="#1-java中只支持单继承" class="headerlink" title="1.java中只支持单继承"></a><strong>1.java中只支持单继承</strong></h3><p>也就是说，一个类只能够有一个父类。但是java支持“多重继承”。</p>
+<p>单继承：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span>()</span>&#123;&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">extends</span> <span class="title">A</span> ()</span>&#123;&#125;</div></pre></td></tr></table></figure>
+<p>多重继承：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span></span>&#123;&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">extends</span> <span class="title">A</span> </span>&#123;&#125; </div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span> <span class="keyword">extends</span> <span class="title">B</span> </span>&#123;&#125;</div></pre></td></tr></table></figure>
+<blockquote>
+<p>为什么java不支持多继承呢？因为容易造成不必要的混乱。比如说：</p>
+<ul>
+<li><strong>结构复杂化</strong>：如果是单一继承，一个类的父类是什么，父类的父类是什么，都很明确，因为只有单一的继承关系，然而如果是多重继承的话，一个类有多个父类，这些父类又有自己的父类，那么类之间的关系就很复杂了。</li>
+<li><strong>优先顺序模糊</strong>：假如我有A，C类同时继承了基类，B类继承了A类，然后D类又同时继承了B和C类，所以D类继承父类的方法的顺序应该是D、B、A、C还是D、B、C、A，或者是其他的顺序，很不明确。</li>
+<li><strong>功能冲突</strong>：因为多重继承有多个父类，所以当不同的父类中有相同的方法是就会产生冲突。如果B类和C类同时又有相同的方法时，D继承的是哪个方法就不明确了，因为存在两种可能性。</li>
+</ul>
+<p>当然，多继承的这些问题很多语言已经解决了，比如c++，python等，但并不是所有的语言都有必要去解决这个问题。java的类虽然不能实现多继承，但是java的接口支持多实现，这个我们讲到接口的时候再说。</p>
+<p>对多继承感兴趣的可以google一下mixin（混入），还可以去看一下基于java8的mixin实现（大多数都是线程不安全的，不要随便用）。  </p>
+</blockquote>
+<h3 id="2-子类拥有父类非private的属性，方法"><a href="#2-子类拥有父类非private的属性，方法" class="headerlink" title="2.子类拥有父类非private的属性，方法"></a><strong>2.子类拥有父类非private的属性，方法</strong></h3><p>也就是说，父类的属性或者方法如果是peivate的，那么子类是不能继承它的。讲到这里，就必须得提一下四个修饰符了：</p>
+<table>
+<thead>
+<tr>
+<th>—-</th>
+<th style="text-align:center">本类</th>
+<th style="text-align:center">同包（无关类或子类）</th>
+<th style="text-align:center">不同包（子类）</th>
+<th style="text-align:center">不同包（无关类）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>private</td>
+<td style="text-align:center">✅</td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td>default</td>
+<td style="text-align:center">✅</td>
+<td style="text-align:center">✅</td>
+</tr>
+<tr>
+<td>protected</td>
+<td style="text-align:center">✅</td>
+<td style="text-align:center">✅</td>
+<td style="text-align:center">✅</td>
+</tr>
+<tr>
+<td>public</td>
+<td style="text-align:center">✅</td>
+<td style="text-align:center">✅</td>
+<td style="text-align:center">✅</td>
+<td style="text-align:center">✅</td>
+</tr>
+</tbody>
+</table>
+<p>在java中，protected关键字大展身手的地方就是在继承中。《thinking in java》中是这样介绍protected的：</p>
+<blockquote>
+<p>在理想世界中，仅靠关键字private已经足够了。但在实际项目中，经常会想要将某些事物尽可能堆这个世界隐藏起来，但仍然允许导出的类的成员访问他们。关键字protected就是起这个作用的。它指明”就类用户而言，这是privated，但是对于任何一个继承于此类的导出类或其他任何一个位于同一个包内的类来说，他却是可以访问的”</p>
+</blockquote>
+<p>怎么理解呢？写个代码你就明白了</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">package</span> cn.pkgA</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">A</span> </span>&#123;</div><div class="line">	<span class="keyword">protected</span> String name；</div><div class="line">&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">B</span> <span class="keyword">extends</span> <span class="title">A</span></span>&#123;&#125;</div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span> </span>&#123;</div><div class="line">	B b = <span class="keyword">new</span> B();</div><div class="line">	b.name;<span class="comment">//可以访问到</span></div><div class="line">&#125;</div><div class="line"><span class="keyword">package</span> cn.pkgB</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">C</span> </span>&#123;</div><div class="line">	B b = <span class="keyword">new</span> B();</div><div class="line">	b.name;<span class="comment">//访问不到</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="3-子类可以拥有自己的属性和方法，即子类可以对父类进行扩展。"><a href="#3-子类可以拥有自己的属性和方法，即子类可以对父类进行扩展。" class="headerlink" title="3.子类可以拥有自己的属性和方法，即子类可以对父类进行扩展。"></a><strong>3.子类可以拥有自己的属性和方法，即子类可以对父类进行扩展。</strong></h3><p>如果子类只能有父类的属性和方法，那要子类还有什么用？？</p>
+<h3 id="4-子类可以用自己的方式实现父类的方法。"><a href="#4-子类可以用自己的方式实现父类的方法。" class="headerlink" title="4.子类可以用自己的方式实现父类的方法。"></a><strong>4.子类可以用自己的方式实现父类的方法。</strong></h3><p>这个叫做函数重写（覆盖），我们一会会重点分析。</p>
+<h2 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a><strong>构造器</strong></h2><p>除了被peivate修饰的方法和变量之外，父类的构造器也不能被子类继承。</p>
+<p>但是父类的构造器带有参数的，则必须在子类的构造器中显式地通过super关键字调用父类的构造器并配以适当的当属列表。</p>
+<p>如果父类有无参构造器，则在子类的构造器中用super调用父类构造器不是必须的，如果没有使用super关键字，系统会自动调用父类的无参构造器。</p>
+<p>我们给Person类添加一个构造器：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</div><div class="line">    <span class="keyword">protected</span> String name;</div><div class="line">    <span class="keyword">protected</span> <span class="keyword">int</span> age;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span>&#123;</div><div class="line">        System.out.println(<span class="string">"i am eating"</span>);</div><div class="line">    &#125;</div><div class="line">	<span class="comment">//带参数的构造器</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">Person</span><span class="params">(String name, <span class="keyword">int</span> age)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.name = name;</div><div class="line">        <span class="keyword">this</span>.age = age;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个时候，如果你不给子类添加构造器并在第一行写入super（name，age），则会报错：</p>
+<blockquote>
+<p><img src="http://img.blog.csdn.net/20161129165450586" alt="这里写图片描述"> </p>
+</blockquote>
+<p>在子类添加如下方法后错误消失：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="title">Man</span><span class="params">(String name, <span class="keyword">int</span> age<span class="comment">/*, boolean hasBeard*/</span>)</span> </span>&#123;</div><div class="line">    <span class="keyword">super</span>(name, age);</div><div class="line">    <span class="comment">//this.hasBeard = hasBeard;</span></div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//注释掉的地方可有可无</span></div></pre></td></tr></table></figure>
+<p>为什么会有这个要求呢？你一会就知道了，先卖个关子。</p>
+<h2 id="重写与重载"><a href="#重写与重载" class="headerlink" title="重写与重载"></a><strong>重写与重载</strong></h2><h3 id="重写"><a href="#重写" class="headerlink" title="重写"></a><strong>重写</strong></h3><p>重写又叫覆盖，发生在继承关系下的子类中。我们上面说过，子类可以用自己的方式实现父类的方法，重写不能改变参数列表，也不能缩小方法的访问权限，如果父类方法抛出异常，子类抛出的异常不能比父类的异常“大”，也不能抛出新的异常。</p>
+<p>我们Person类中有一个方法：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span>&#123;</div><div class="line">    System.out.println(<span class="string">"i am eating"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>有一个子类修道成仙了，不吃饭，于是他可以在他自己的类里这样改<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="meta">@Override</span>  <span class="comment">//这个是注解，表明这个方法是重写了父类的方法，最好写上</span></div><div class="line">   <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span>&#123;</div><div class="line">       System.out.println(<span class="string">"i don't eat"</span>);</div><div class="line">   &#125;</div></pre></td></tr></table></figure></p>
+<p>这里提一下，子类重写父类方法不能缩小父类方法的访问权限但扩大是可以的。比如说父类有一个protected方法，子类重写它的时候不能改为private，但是可以改成public。</p>
+<p>这里还有一个不大不小的坑。如果你的父类方法是peivate的，比如：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span>&#123;</div><div class="line">    System.out.println(<span class="string">"i am eating"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>你可以在子类中这样写：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">eat</span><span class="params">()</span></span>&#123;</div><div class="line">    System.out.println(<span class="string">"i don't eat"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>但是，这不是重写！！！！因为父类方法是私有的，所以子类根本没有得到eat()这个方法，子类的eat()方法是你重新定义的一个和父类没有半毛钱的函数。</p>
+<h3 id="重载"><a href="#重载" class="headerlink" title="重载"></a><strong>重载</strong></h3><p>把重载放到这里讲只是因为它和重写有的然傻傻分不清楚，重载和继承没有任何关系（当然，继承之间也存在重载，也就是说，继承可以重载，但是重载不一定继承），它发生在类本身。重载方法的特点是方法名相同而参数列表不同。</p>
+<p>比如这样：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">count</span><span class="params">(<span class="keyword">int</span> a , <span class="keyword">int</span> b)</span></span>&#123;</div><div class="line">	System.out.println(<span class="string">"a+b="</span> + (a+b));</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">count</span><span class="params">(<span class="keyword">int</span> a , <span class="keyword">int</span> b,<span class="keyword">int</span> c)</span></span>&#123;</div><div class="line">	System.out.println(<span class="string">"a+b="</span> + (a+b+c));</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">count</span><span class="params">(<span class="keyword">int</span> a , <span class="keyword">int</span> b ,<span class="keyword">double</span> c)</span></span>&#123;</div><div class="line">	System.out.println(<span class="string">"a+b="</span> + (a+b+c));</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>函数重载的特点：</p>
+<ul>
+<li>被重载的方法<strong>必须</strong>改变参数列表(参数个数或类型或顺序不一样)；</li>
+<li>被重载的方法可以改变返回类型；</li>
+<li>被重载的方法可以改变访问修饰符；</li>
+<li>被重载的方法可以声明新的或更广的检查异常（区别于重写）；</li>
+<li>方法能够在同一个类中或者在一个子类中被重载。</li>
+</ul>
+<p>注意：参数列表必须不同！</p>
+<h2 id="继承的缺点"><a href="#继承的缺点" class="headerlink" title="继承的缺点"></a><strong>继承的缺点</strong></h2><ul>
+<li>继承是一种强耦合关系，父类变，子类就必须变。</li>
+<li>继承破坏了封装，对于父类而言，它的实现细节对与子类来说都是透明的。</li>
+</ul>
+<p>提醒！慎用继承！</p>
+<p>如果你知道高手写代码都想着怎么解耦你就知道这个缺点室友多么讨厌了。</p>
+<p>你可能会问，我不用继承用什么？别急，接下来的几篇文章会告诉你。</p>
+<h2 id="昨天的遗留问题"><a href="#昨天的遗留问题" class="headerlink" title="昨天的遗留问题"></a><strong>昨天的遗留问题</strong></h2><p>看了上一篇文章的人可能还记得那个遗留问题。我们现在来解决一下：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">//父类</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Person</span> </span>&#123;</div><div class="line">    <span class="keyword">protected</span> String name;</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">marry</span><span class="params">(Person p)</span></span>&#123;</div><div class="line">        System.out.println(<span class="string">"marry"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.name = name;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> name;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">//man类</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Man</span> <span class="keyword">extends</span> <span class="title">Person</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> Woman wife;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">double</span> money;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">marry</span><span class="params">(Person p)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.wife = (Woman)p;</div><div class="line">        p.marry(<span class="keyword">this</span>);</div><div class="line">    &#125;</div><div class="line">	<span class="comment">//只有自己和妻子可以用钱</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setMoney</span><span class="params">(Person p,<span class="keyword">double</span> money)</span> </span>&#123;</div><div class="line">        <span class="keyword">if</span> (p == <span class="keyword">this</span> || p == <span class="keyword">this</span>.wife)</div><div class="line">            <span class="keyword">this</span>.money = money;</div><div class="line">        <span class="keyword">else</span></div><div class="line">            System.out.println(p.getName()+<span class="string">"抢钱！"</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getMoney</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> money;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">//woman类</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Woman</span> <span class="keyword">extends</span> <span class="title">Person</span></span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">boolean</span> hasLongHair;</div><div class="line">    <span class="keyword">private</span> Man husband;</div><div class="line"></div><div class="line">    <span class="meta">@Override</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">marry</span><span class="params">(Person p)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.husband = (Man)p;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>我们来看一下效果：</p>
+<blockquote>
+<p><img src="http://img.blog.csdn.net/20161129215239122" alt="这里写图片描述"> </p>
+<p>看起来还不错，不是么。</p>
+</blockquote>
+<p>当然，我更喜欢这么做</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setMoney</span><span class="params">(Person p,<span class="keyword">double</span> money)</span> </span>&#123;</div><div class="line">	  <span class="keyword">if</span> (p == <span class="keyword">this</span> || p == <span class="keyword">this</span>.wife)</div><div class="line">	      <span class="keyword">this</span>.money = money;</div><div class="line">	  <span class="keyword">else</span> <span class="keyword">if</span>(money &gt; <span class="keyword">this</span>.money)</div><div class="line">		  <span class="keyword">this</span>.money = money;</div><div class="line">	  <span class="keyword">else</span>  </div><div class="line">	      System.out.println(p.getName()+<span class="string">"抢钱！"</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a><strong>总结</strong></h2><p>继承还有很多知识点，比如向上转型和向下转型（上面解决上一篇问题的代码就用到了这个知识点），在继承中，对象是怎么初始化的，静态代码块的使用，final关键字的使用等等。</p>
+<p>但是我打算先放一放再讲，等写完组合，聚合和多态再来讨论这些知识会更好一点。</p>
+<p>下一篇《重新认识java（四） —  组合、聚合与继承的爱恨情仇》敬请期待。</p>
+<hr>
+<p>有错误或者我没讲到的地方或者更好的思路请及时与我联系！</p>
+
+
+      <div class="guide-links">
+        
+        <span>← <a href="/study/java/two.html">封装</a></span>
+        
+        
+    </div>
+
+    <div class="footer">
+      发现错误？想参与编辑？
+      <a href="https://github.com/CleverFan/CleverFan.github.io/blob/2.0-cn/src/study/java/three.md" target="_blank">
+        在 Github 上编辑此页！
+      </a>
+    </div>
+</div>
+
+                
+            </div>
+            <script src="/js/smooth-scroll.min.js"></script>
+        
+
+        <!-- main custom script for sidebars, version selects etc. -->
+        <script src="/js/common.js"></script>
+
+        <!-- ga -->
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-46852172-1', 'vuefe.cn');
+          ga('send', 'pageview');
+        </script>
+
+        <!-- search -->
+        <link href="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/css/search.css">
+        <script src="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
+        <script>
+//        [
+//          '#search-query-nav',
+//          '#search-query-sidebar'
+//        ].forEach(function (selector) {
+//          if (!document.querySelector(selector)) return
+//          // search index defaults to v2
+//          var match = window.location.pathname.match(/^\/(v\d+)/)
+//          var version = match ? match[1] : 'v2'
+//          docsearch({
+//            appId: 'BH4D9OD16A',
+//            apiKey: '85cc3221c9f23bfbaa4e3913dd7625ea',
+//            indexName: 'vuejs',
+//            inputSelector: selector,
+//            algoliaOptions: { facetFilters: ["version:" + version] }
+//          })
+//        })
+        </script>
+
+        <!-- fastclick -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          FastClick.attach(document.body)
+        }, false)
+        </script>
+    </body>
+</html>

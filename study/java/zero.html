@@ -1,0 +1,450 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>万物皆对象（上） - CleverFan</title>
+        <meta charset="utf-8">
+        <meta name="description" content="Vue.js - Intuitive, Fast and Composable MVVM for building interactive interfaces.">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="万物皆对象（上） - CleverFan">
+        <meta property="og:description" content="Vue.js - Intuitive, Fast and Composable MVVM for building interactive interfaces.">
+        <meta property="og:image" content="https://vuefe.cn/images/logo.png">
+
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:title" content="万物皆对象（上） - CleverFan">
+        <meta name="twitter:description" content="Vue.js - Intuitive, Fast and Composable MVVM for building interactive interfaces.">
+        <meta name="twitter:image" content="https://vuefe.cn/images/logo.png">
+
+        <link rel="icon" href="/images/logo.png" type="image/x-icon">
+
+        <!--<link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto Mono' rel='stylesheet' type='text/css'>-->
+        <!--<link href='//fonts.googleapis.com/css?family=Dosis:500&text=Vue.js' rel='stylesheet' type='text/css'>-->
+
+        <!-- main page styles -->
+        <link rel="stylesheet" href="/css/page.css">
+
+        <!-- this needs to be loaded before guide's inline scripts -->
+        <script src="/js/vue.js"></script>
+        <script>window.PAGE_TYPE = "javaImprove"</script>
+    </head>
+    <body class="docs">        <div id="mobile-bar" >
+            <a class="menu-button"></a>
+            <a class="logo" href="/"></a>
+        </div>
+        <div id="header">
+  <a id="logo" href="/">
+    <img src="/images/logo.png">
+    <span>CleverFan</span>
+  </a>
+  <span style="
+    position: absolute;
+    top: 100%;
+    left: 60px;
+    padding: 0 10px;
+    background: #ef9f00;
+    border-radius: 3px;
+    margin-top: -15px;
+    line-height: 30px;
+    color: white;
+    font-weight: 400;
+    letter-spacing: 1px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.3);
+  ">
+  有问题请联系:chengfan818@gmail.com
+  </span>
+  <ul id="nav">
+    <li>
+  <form id="search-form">
+    <input type="text" id="search-query-nav" class="search-query st-default-search-input">
+  </form>
+</li>
+<li><a href="/study/java/" class="nav-link current">java</a></li>
+<li><a href="/study/linux/" class="nav-link">linux</a></li>
+<li><a href="/study/nodejs/" class="nav-link">nodejs</a></li>
+<li><a href="/about/" class="nav-link">参与贡献</a></li>
+<li class="nav-dropdown-container">
+  <a class="nav-link">其他</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://github.com/CleverFan" class="nav-link" target="_blank">GitHub</a></li>
+    <li><a href="http://blog.csdn.net/qq_31655965" class="nav-link" target="_blank">csdn</a></li>
+    <li><a href="http://www.improvecfan.cn" class="nav-link" target="_blank">博客</a></li>
+
+  </ul>
+</li>
+
+<!--<li class="nav-dropdown-container ecosystem">
+  <a class="nav-link">生态系统</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><h4>帮助</h4></li>
+    <li><ul>
+      <li><a href="http://forum.vuejs.org" class="nav-link" target="_blank">论坛</a></li>
+      <li><a href="https://gitter.im/vuejs/vue" class="nav-link" target="_blank">聊天室</a></li>
+      <li><a href="https://github.com/vuejs-templates" class="nav-link" target="_blank">模板</a></li>
+    </ul></li>
+    <li><h4>信息</h4></li>
+    <li><ul>
+      <li><a href="https://twitter.com/vuejs" class="nav-link" target="_blank">Twitter</a></li>
+      <li><a href="https://medium.com/the-vue-point" class="nav-link" target="_blank">博客</a></li>
+      <li><a href="https://vuejobs.com/?ref=vuejs" class="nav-link" target="_blank">工作</a></li>
+    </ul></li>
+    <li><h4>核心插件</h4></li>
+    <li><ul>
+      <li><a href="https://router.vuejs.org/" class="nav-link" target="_blank">Vue Router</a></li>
+      <li><a href="https://vuex.vuejs.org/" class="nav-link" target="_blank">Vuex</a></li>
+    </ul></li>
+    <li><h4>资源列表</h4></li>
+    <li><ul>
+      <li><a href="https://github.com/vuejs" class="nav-link" target="_blank">官方仓库</a></li>
+      <li><a href="https://github.com/vuejs/awesome-vue" class="nav-link" target="_blank">Vue 资源</a></li>
+    </ul></li>
+    <li><h4>其它</h4></li>
+    <li><a href="https://webpack.vuefe.cn" target="_blank">webpack</a></li>
+  </ul>
+</li>-->
+<!--<li class="nav-dropdown-container language">
+  <a class="nav-link">Translations</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://cn.vuejs.org/" class="nav-link" target="_blank">中文</a></li>
+    <li><a href="https://jp.vuejs.org/" class="nav-link" target="_blank">日本語</a></li>
+    <li><a href="https://ru.vuejs.org/" class="nav-link" target="_blank">Русский</a></li>
+  </ul>
+</li>
+-->
+  </ul>
+</div>
+
+        
+            <div id="main" class="fix-sidebar">
+                
+                    
+    <div class="sidebar">
+    <ul class="main-menu">
+        <li>
+  <form id="search-form">
+    <input type="text" id="search-query-sidebar" class="search-query st-default-search-input">
+  </form>
+</li>
+<li><a href="/study/java/" class="nav-link current">java</a></li>
+<li><a href="/study/linux/" class="nav-link">linux</a></li>
+<li><a href="/study/nodejs/" class="nav-link">nodejs</a></li>
+<li><a href="/about/" class="nav-link">参与贡献</a></li>
+<li class="nav-dropdown-container">
+  <a class="nav-link">其他</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://github.com/CleverFan" class="nav-link" target="_blank">GitHub</a></li>
+    <li><a href="http://blog.csdn.net/qq_31655965" class="nav-link" target="_blank">csdn</a></li>
+    <li><a href="http://www.improvecfan.cn" class="nav-link" target="_blank">博客</a></li>
+
+  </ul>
+</li>
+
+<!--<li class="nav-dropdown-container ecosystem">
+  <a class="nav-link">生态系统</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><h4>帮助</h4></li>
+    <li><ul>
+      <li><a href="http://forum.vuejs.org" class="nav-link" target="_blank">论坛</a></li>
+      <li><a href="https://gitter.im/vuejs/vue" class="nav-link" target="_blank">聊天室</a></li>
+      <li><a href="https://github.com/vuejs-templates" class="nav-link" target="_blank">模板</a></li>
+    </ul></li>
+    <li><h4>信息</h4></li>
+    <li><ul>
+      <li><a href="https://twitter.com/vuejs" class="nav-link" target="_blank">Twitter</a></li>
+      <li><a href="https://medium.com/the-vue-point" class="nav-link" target="_blank">博客</a></li>
+      <li><a href="https://vuejobs.com/?ref=vuejs" class="nav-link" target="_blank">工作</a></li>
+    </ul></li>
+    <li><h4>核心插件</h4></li>
+    <li><ul>
+      <li><a href="https://router.vuejs.org/" class="nav-link" target="_blank">Vue Router</a></li>
+      <li><a href="https://vuex.vuejs.org/" class="nav-link" target="_blank">Vuex</a></li>
+    </ul></li>
+    <li><h4>资源列表</h4></li>
+    <li><ul>
+      <li><a href="https://github.com/vuejs" class="nav-link" target="_blank">官方仓库</a></li>
+      <li><a href="https://github.com/vuejs/awesome-vue" class="nav-link" target="_blank">Vue 资源</a></li>
+    </ul></li>
+    <li><h4>其它</h4></li>
+    <li><a href="https://webpack.vuefe.cn" target="_blank">webpack</a></li>
+  </ul>
+</li>-->
+<!--<li class="nav-dropdown-container language">
+  <a class="nav-link">Translations</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://cn.vuejs.org/" class="nav-link" target="_blank">中文</a></li>
+    <li><a href="https://jp.vuejs.org/" class="nav-link" target="_blank">日本語</a></li>
+    <li><a href="https://ru.vuejs.org/" class="nav-link" target="_blank">Русский</a></li>
+  </ul>
+</li>
+-->
+    </ul>
+    <div class="list">
+        <div class="main-sponsor">
+            <span>赞助者</span><br>
+            <a href="#" target="_blank"
+                style="background-color: #f3f3f3; padding: 10px 0">
+                <img src="/images/github.png">
+            </a>
+        </div>
+        <a class="become-backer" href="/support-me">
+            成为赞助者
+        </a>
+        <h2>
+            
+            <!---->
+                <!--<select class="version-select">-->
+                    <!--<option value="SELF" selected>2.0</option>-->
+                    <!--<option value="v1">1.0</option>-->
+                    <!--<option value="012">0.12</option>-->
+                    <!--<option value="011">0.11</option>-->
+                <!--</select>-->
+            <!---->
+        </h2>
+        <ul class="menu-root">
+            
+                
+
+                
+                
+                <li>
+                    <a href="/study/java/index.html" class="sidebar-link">开始</a>
+                </li>
+            
+                
+
+                
+                
+                <li>
+                    <a href="/study/java/zero.html" class="sidebar-link current">万物皆对象（上）</a>
+                </li>
+            
+                
+
+                
+                
+                <li>
+                    <a href="/study/java/one.html" class="sidebar-link">万物皆对象(下)</a>
+                </li>
+            
+                
+
+                
+                
+                <li>
+                    <a href="/study/java/two.html" class="sidebar-link">封装</a>
+                </li>
+            
+                
+
+                
+                
+                <li>
+                    <a href="/study/java/three.html" class="sidebar-link">继承</a>
+                </li>
+            
+            
+        </ul>
+    </div>
+</div>
+
+
+<div class="content javaImprove with-sidebar zero-javaImprove">
+    
+      <h1>万物皆对象（上）</h1>
+    
+    
+    <blockquote>
+<p>如果你现实中没有对象，至少你在java世界里会有茫茫多的对象，听起来是不是很激动呢？</p>
+</blockquote>
+<h2 id="对象，引用，类与现实世界"><a href="#对象，引用，类与现实世界" class="headerlink" title="对象，引用，类与现实世界"></a><strong>对象，引用，类与现实世界</strong></h2><p>现实世界里有许许多多的生物，非生物，跑的跳的飞的，过去的现在的未来的，令人眼花缭乱。我们编程的目的，就是解决现实生活中的问题。所以不可避免的我们要和现实世界中各种奇怪的东西打交道。</p>
+<p>在现实世界里，你新认识了一个朋友，你知道他长什么样，知道了他的名字年龄，地址。知道他喜欢干什么有什么特长。你想用java语言描述一下这个人，你应该怎么做呢？</p>
+<p>这个时候，就有了类的概念。每一个类对应现实世界中的某一事物。比如现实世界中有人。那么我们就创建一个关于“人”的类。</p>
+<p>每一个人都有名字，都有地址等等个人信息。那么我们就在“人”的类里面添加这些属性。</p>
+<p>每一个人都会吃，会走路，那么我们就在“人”的类里面添加吃和走的方法。</p>
+<p>当这个世界又迎来了一个新生命，我们就可以“new”一个“人”，“new”出来的就叫”对象“。</p>
+<p>每一个人一出生，父母就会给他取个名字。在程序里，我们需要用一种方式来操作这个“对象”，于是，就出现了引用。我们通过引用来操作对象，设置对象的属性，操作对象的方法。</p>
+<p>这就是最基本的面向对象。</p>
+<blockquote>
+<p>【 <strong>现实世界的事物</strong>】 —抽象—&gt; 【<strong>类</strong> 】—new—&gt;【<strong>对象</strong> 】&lt;—控制— 【<strong>引用</strong>】</p>
+</blockquote>
+<h2 id="从创建一个对象开始"><a href="#从创建一个对象开始" class="headerlink" title="从创建一个对象开始"></a><strong>从创建一个对象开始</strong></h2><p>创建对象的前提是先得有一个类。我们先自己创建一个person类。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">//Person类</div><div class="line">public class Person &#123;</div><div class="line">    private String name;</div><div class="line">    private int age;</div><div class="line"></div><div class="line">    public void eat()&#123;</div><div class="line">        System.out.println(&quot;i am eating&quot;);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>创建一个person对象。<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line">Person p = <span class="keyword">new</span> Person();</div></pre></td></tr></table></figure></p>
+<p>怎么理解这句简单的代码呢？</p>
+<ul>
+<li><strong>new Person</strong> :一个Person类型的对象</li>
+<li><strong>()</strong> : 这个括号相当于调用了person的无参构造方法</li>
+<li><strong>p</strong> ： Person对象的引用</li>
+</ul>
+<p>有的人会认为p就是new出来的Person对象。这是错误的理解，p只是一个Person对象的引用而已。那么问题来了，什么是引用？什么又是对象呢？这个要从内存说起。</p>
+<h2 id="创建对象的过程"><a href="#创建对象的过程" class="headerlink" title="创建对象的过程"></a><strong>创建对象的过程</strong></h2><p>java大体上会把内存分为四块区域：堆，栈，静态区，常量区。</p>
+<ul>
+<li>堆 ： 位于RAM中，用于存放所有的java对象。</li>
+<li>栈 ： 位于RAM中，引用就存在于栈中。</li>
+<li>静态区 : 位于RAM中，被static修饰符修饰的变量会被放在这里</li>
+<li>常量区 ：位于ROM中， 很明显，放常量的。</li>
+</ul>
+<blockquote>
+<p>事实上，我们不需要关心java的对象，变量到底存在了哪里，因为jvm会帮我们处理好这些。但是理解了这些，有助于提高我们的水平。</p>
+</blockquote>
+<p>当执行这句代码的时候。<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line">Person p = <span class="keyword">new</span> Person();</div></pre></td></tr></table></figure></p>
+<p>首先，会在堆中开辟一块空间存放这个新来的Person对象。然后，会创建一个引用p，存放在栈中，这个引用p指向Person对象（事实上是，p的值就是Person对象的内存地址）。</p>
+<p>这样，我们通过访问p，然后得到了Person的内存地址，进而找到了Person对象。</p>
+<p>然后又有了这样一句代码：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line">Person p2 = p;</div></pre></td></tr></table></figure>
+<p>这句代码的含义是：<br>    创建了一个新的引用，保存在栈中，引用的地址也指向Person的地址。这个时候，你通过p2来改变Person对象的状态，也会改变p的结果。因为它们指向同一个对象。（String除外，之后会专门讲String）</p>
+<p>此时，内存中是这样的：</p>
+<p><img src="http://img.blog.csdn.net/20161127181947666" alt="这里写图片描述"></p>
+<p>用一种很通俗的方式来讲解一下引用和对象。</p>
+<p>大家都应该用过windows吧。win有一个神奇的东西叫做快捷方式。我们桌面的图标大部分都是快捷方式。它并不是我们安装在电脑上的应用的可执行文件（不是.exe文件)，那么为什么点击它可以打开应用程序呢？这个我不用讲了把。</p>
+<p>我们的对象和引用就和快捷方式和它连接的文件一样。</p>
+<p>我们不直接对文件进行操作，而是通过快捷方式来进行操作。快捷方式不能独立存在，同样，引用也不能独立存在（你可以只创建一个引用，但是当你要使用它的时候必须得给它赋值，否则它将毫无用处）。</p>
+<p>一个文件可以有多个快捷方式，同样一个对象也可以有多个引用。而一个引用只能同时对应一个对象。</p>
+<blockquote>
+<p>在java里，“=”不能被看成是一个赋值语句，它不是在把一个对象赋给另外一个对象，它的执行过程实质上是将右边对象的地址传给了左边的引用，使得左边的引用指向了右边的对象。java表面上看起来没有指针，但它的引用其实质就是一个指针。在java里，“=”语句不应该被翻译成赋值语句，因为它所执行的确实不是一个简单的赋值过程，而是一个传地址的过程，被译成赋值语句会造成很多误解，译得不准确。</p>
+</blockquote>
+<h2 id="特例：基本数据类型"><a href="#特例：基本数据类型" class="headerlink" title="特例：基本数据类型"></a><strong>特例：基本数据类型</strong></h2><p>为什么会有特例呢？因为用new操作符创建的对象会存在堆里，二在堆里开辟空间等行为效率较操作栈要低。而我们平时写代码的时候会经常创建一些“小变量”，比如int i = 1；如果每次都用Interger来new一个，效率不是很高而且浪费内存。</p>
+<p>所以针对这些情况，java提供了“基本数据类型”，基本数据类型一共有八种，每一个基本数据类型存放在栈中，而他们的值存放在常量区中。</p>
+<p>举个例子：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">int i = 2;</div><div class="line">int j = 2;</div></pre></td></tr></table></figure>
+<p>我们需要知道的是，在常量区中，相同的常量只会存在一个。当执行第一句代码时。先查找常量区中有没有2，没有，则开辟一个空间存放2，然后在栈中存入一个变量i，让i指向2；</p>
+<p>执行第二句的时候，查找发现2已经存在了，所以就不开辟新空间了。直接在栈中保存一个新变量j，让j指向2；</p>
+<p>当然，java堆每一个基本数据类型都提供了对应的包装类。我们依旧可以用new操作符来创建我们想要的变量。</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><div class="line">Integer i = new Integer(1);</div><div class="line">Integer j = new Integer(1);</div></pre></td></tr></table></figure>
+<p>但是，用new操作符创建的对象是不同的，也就是说，此时，i和j指向不同的内存地址。因为每次调用new操作符，都会在堆开辟新的空间。</p>
+<p>当然，说到基本数据类型，不得不提一下java的经典设计。</p>
+<p>先看一段代码：</p>
+<blockquote>
+<p><img src="http://img.blog.csdn.net/20161127213126561" alt="这里写图片描述"> </p>
+</blockquote>
+<p>为什么一个是true一个是false呢？</p>
+<p>我就不讲了，应该都知道吧。我就贴一个Integer的源码（jdk1.8）吧。</p>
+<blockquote>
+<p><img src="http://img.blog.csdn.net/20161127213328205" alt="这里写图片描述"></p>
+<p>Integer 类的内部定义了一个内部类，缓存了从-128到127的所有数字，所以，你懂得。</p>
+</blockquote>
+<h2 id="又一个特例-：String"><a href="#又一个特例-：String" class="headerlink" title="又一个特例 ：String"></a><strong>又一个特例 ：String</strong></h2><p>String是一个特殊的类，因为它被final修饰符所修饰，是一个不可改变的类。当然，看过java源码后你会发现，基本类型的各个包装类也被final所修饰。这里以String为例。</p>
+<p>我们来看这样一个例子</p>
+<blockquote>
+<p><img src="http://img.blog.csdn.net/20161127190238240" alt="这里写图片描述"></p>
+<p>执行第一句 ： 常量区开辟空间存放“abc”，s1存放在栈中指向“abc”</p>
+<p>执行第二句，s2 也指向 “abc”，</p>
+<p>执行第三句，因为“abc”已经存在，所以直接指向它。</p>
+<p>所以三个变量指向同一块内存地址，结果都为true。</p>
+<p>当s1内容改变的时候。这个时候，常量区开辟新的空间存放“bcd”，s1指向“bcd”，而s2和s3指向“abc”所以只有s2和s3相等。</p>
+</blockquote>
+<p>这种情况下，s1,s2,s3都是字符串常量，类似于基本数据类型。（如果执行的是s1 = “abc”,那么结果会都是true）</p>
+<p>我们再看一个例子：</p>
+<blockquote>
+<p><img src="http://img.blog.csdn.net/20161127191904759" alt="这里写图片描述"></p>
+<p>执行第一行代码： 在堆里分配空间存放String对象，在常量区开辟空间存放常量“abc”，String对象指向常量，s1指向该对象。</p>
+<p>执行第二行代码：s2指向“abc”</p>
+<p>执行第三行代码： 在堆里分配新的空间存放String对象，新对象指向常量“abc”，s3指向该对象。</p>
+<p>到这里，很明显，s1和s2指向的是同一个对象（虽然两个String对象都指向同一个常量，但两个对象是不同的）</p>
+<p>接着就很诡异了，我们让s1 依旧= “abc”,但是结果s1和s2指向的地址不同了。</p>
+</blockquote>
+<p>怎么回事呢？这就是String类的特殊之处了，new出来的String不再是上面的字符串常量，而是字符串对象。</p>
+<p>由于String类是不可改变的，所以String对象也是不可改变的，我们每次给String赋值都相当于执行了一次new String()，然后让变量指向这个新对象，而不是在原来的对象上修改。</p>
+<p>当然，java还提供了StringBuffer类，这个是可以在原对象上做修改的。如果你需要修改原对象，那么请使用StringBuffer类。</p>
+<h2 id="值传递和引用传递的战争"><a href="#值传递和引用传递的战争" class="headerlink" title="值传递和引用传递的战争"></a><strong>值传递和引用传递的战争</strong></h2><p>java是值传递还是引用传递的呢？毫无疑问，java是值传递的。那么什么又叫值传递和引用传递呢？</p>
+<p>我们先来看一个例子：</p>
+<blockquote>
+<p><img src="http://img.blog.csdn.net/20161127194158008" alt="这里写图片描述"> </p>
+</blockquote>
+<p>这是一个很经典的例子，我们希望调用了swap函数以后，a和b的值可以互换，但是事实上并没有。为什么会这样呢？</p>
+<p>这就是因为java是值传递的。也就是说，我们在调用一个需要传递参数的函数时，传递给函数的参数并不是我们传进去的参数本身，而是它的副本。说起来比较拗口，但是其实原理很简单。我们可以这样理解：</p>
+<p>一个有形参的函数，当别的函数调用它的时候，必须要传递数据。<br>比如swap函数，别的函数要调用swap就必须传两个整数过来。</p>
+<p>这个时候，有一个函数按耐不住寂寞，扔了两个整数过来，但是，swap函数有洁癖，它不喜欢用别人的东西，于是它把传过来的参数复制了一份，然后对复制的数据修修改改，而别人传过来的参数动根本没动。</p>
+<p>所以，当swap函数执行完毕之后，交换了的数据只是swap自己复制的那一份，而原来的数据没变。</p>
+<blockquote>
+<p>也可以理解为别的函数把数据传递给了swap函数的形参，最后改变的只是形参而实参没变，所以不会起到任何效果。</p>
+</blockquote>
+<p>我们再来看一个复杂一点的例子(Person类添加了get，set方法)：</p>
+<blockquote>
+<p><img src="http://img.blog.csdn.net/20161127201149518" alt="这里写图片描述"></p>
+<p>可以看到，我们把p1传进去，它并没有被替换成新的对象。因为change函数操作的不是p1这个引用本身，而是这个引用的一个副本。</p>
+<p>你依然可以理解为，主函数将p1复制了一份然后变成了chagne函数的形参，最终指向新Person对象的是那个副本引用，而实参p1并没有改变。</p>
+</blockquote>
+<p>再来看一个例子：</p>
+<blockquote>
+<p><img src="http://img.blog.csdn.net/20161127201335005" alt="这里写图片描述"> </p>
+<p>这次为什么就改变了呢？分析一下。</p>
+<p>首先，new了一个Person对象，暂且叫他小明吧。然后p1指向小明。</p>
+<p>小明10岁了，随着时间的推移，小明的年龄要变了，调用了一下changgeAge方法，把小明的引用传了进去。</p>
+<p>传递的过程中，changgeAge也有洁癖，于是复制了一份小明的引用，这个副本也指向小明。</p>
+<p>然后changgeAge通过自己的副本引用，改变了小明的年龄。</p>
+<p>由于是小明这个对象被改变了，所以所有小明的引用调用方法得到的年龄都会改变</p>
+<p>所以就变了。</p>
+</blockquote>
+<p>最后简单的总结一下。</p>
+<p>java的传值过程，其实传的是副本，不管是变量还是引用。所以，不要期待把变量传递给一个函数来改变变量本身。</p>
+
+
+      <div class="guide-links">
+        
+        <span>← <a href="/study/java/index.html">开始</a></span>
+        
+        
+        <span style="float:right"><a href="/study/java/one.html">万物皆对象(下)</a> →</span>
+        
+    </div>
+
+    <div class="footer">
+      发现错误？想参与编辑？
+      <a href="https://github.com/CleverFan/CleverFan.github.io/blob/2.0-cn/src/study/java/zero.md" target="_blank">
+        在 Github 上编辑此页！
+      </a>
+    </div>
+</div>
+
+                
+            </div>
+            <script src="/js/smooth-scroll.min.js"></script>
+        
+
+        <!-- main custom script for sidebars, version selects etc. -->
+        <script src="/js/common.js"></script>
+
+        <!-- ga -->
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-46852172-1', 'vuefe.cn');
+          ga('send', 'pageview');
+        </script>
+
+        <!-- search -->
+        <link href="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/css/search.css">
+        <script src="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
+        <script>
+//        [
+//          '#search-query-nav',
+//          '#search-query-sidebar'
+//        ].forEach(function (selector) {
+//          if (!document.querySelector(selector)) return
+//          // search index defaults to v2
+//          var match = window.location.pathname.match(/^\/(v\d+)/)
+//          var version = match ? match[1] : 'v2'
+//          docsearch({
+//            appId: 'BH4D9OD16A',
+//            apiKey: '85cc3221c9f23bfbaa4e3913dd7625ea',
+//            indexName: 'vuejs',
+//            inputSelector: selector,
+//            algoliaOptions: { facetFilters: ["version:" + version] }
+//          })
+//        })
+        </script>
+
+        <!-- fastclick -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          FastClick.attach(document.body)
+        }, false)
+        </script>
+    </body>
+</html>

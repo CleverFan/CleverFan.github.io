@@ -1,0 +1,397 @@
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>封装 - CleverFan</title>
+        <meta charset="utf-8">
+        <meta name="description" content="Vue.js - Intuitive, Fast and Composable MVVM for building interactive interfaces.">
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+        <meta property="og:type" content="article">
+        <meta property="og:title" content="封装 - CleverFan">
+        <meta property="og:description" content="Vue.js - Intuitive, Fast and Composable MVVM for building interactive interfaces.">
+        <meta property="og:image" content="https://vuefe.cn/images/logo.png">
+
+        <meta name="twitter:card" content="summary">
+        <meta name="twitter:title" content="封装 - CleverFan">
+        <meta name="twitter:description" content="Vue.js - Intuitive, Fast and Composable MVVM for building interactive interfaces.">
+        <meta name="twitter:image" content="https://vuefe.cn/images/logo.png">
+
+        <link rel="icon" href="/images/logo.png" type="image/x-icon">
+
+        <!--<link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600|Roboto Mono' rel='stylesheet' type='text/css'>-->
+        <!--<link href='//fonts.googleapis.com/css?family=Dosis:500&text=Vue.js' rel='stylesheet' type='text/css'>-->
+
+        <!-- main page styles -->
+        <link rel="stylesheet" href="/css/page.css">
+
+        <!-- this needs to be loaded before guide's inline scripts -->
+        <script src="/js/vue.js"></script>
+        <script>window.PAGE_TYPE = "javaImprove"</script>
+    </head>
+    <body class="docs">        <div id="mobile-bar" >
+            <a class="menu-button"></a>
+            <a class="logo" href="/"></a>
+        </div>
+        <div id="header">
+  <a id="logo" href="/">
+    <img src="/images/logo.png">
+    <span>CleverFan</span>
+  </a>
+  <span style="
+    position: absolute;
+    top: 100%;
+    left: 60px;
+    padding: 0 10px;
+    background: #ef9f00;
+    border-radius: 3px;
+    margin-top: -15px;
+    line-height: 30px;
+    color: white;
+    font-weight: 400;
+    letter-spacing: 1px;
+    box-shadow: 0 1px 2px rgba(0,0,0,.3);
+  ">
+  有问题请联系:chengfan818@gmail.com
+  </span>
+  <ul id="nav">
+    <li>
+  <form id="search-form">
+    <input type="text" id="search-query-nav" class="search-query st-default-search-input">
+  </form>
+</li>
+<li><a href="/study/java/" class="nav-link current">java</a></li>
+<li><a href="/study/linux/" class="nav-link">linux</a></li>
+<li><a href="/study/nodejs/" class="nav-link">nodejs</a></li>
+<li><a href="/about/" class="nav-link">参与贡献</a></li>
+<li class="nav-dropdown-container">
+  <a class="nav-link">其他</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://github.com/CleverFan" class="nav-link" target="_blank">GitHub</a></li>
+    <li><a href="http://blog.csdn.net/qq_31655965" class="nav-link" target="_blank">csdn</a></li>
+    <li><a href="http://www.improvecfan.cn" class="nav-link" target="_blank">博客</a></li>
+
+  </ul>
+</li>
+
+<!--<li class="nav-dropdown-container ecosystem">
+  <a class="nav-link">生态系统</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><h4>帮助</h4></li>
+    <li><ul>
+      <li><a href="http://forum.vuejs.org" class="nav-link" target="_blank">论坛</a></li>
+      <li><a href="https://gitter.im/vuejs/vue" class="nav-link" target="_blank">聊天室</a></li>
+      <li><a href="https://github.com/vuejs-templates" class="nav-link" target="_blank">模板</a></li>
+    </ul></li>
+    <li><h4>信息</h4></li>
+    <li><ul>
+      <li><a href="https://twitter.com/vuejs" class="nav-link" target="_blank">Twitter</a></li>
+      <li><a href="https://medium.com/the-vue-point" class="nav-link" target="_blank">博客</a></li>
+      <li><a href="https://vuejobs.com/?ref=vuejs" class="nav-link" target="_blank">工作</a></li>
+    </ul></li>
+    <li><h4>核心插件</h4></li>
+    <li><ul>
+      <li><a href="https://router.vuejs.org/" class="nav-link" target="_blank">Vue Router</a></li>
+      <li><a href="https://vuex.vuejs.org/" class="nav-link" target="_blank">Vuex</a></li>
+    </ul></li>
+    <li><h4>资源列表</h4></li>
+    <li><ul>
+      <li><a href="https://github.com/vuejs" class="nav-link" target="_blank">官方仓库</a></li>
+      <li><a href="https://github.com/vuejs/awesome-vue" class="nav-link" target="_blank">Vue 资源</a></li>
+    </ul></li>
+    <li><h4>其它</h4></li>
+    <li><a href="https://webpack.vuefe.cn" target="_blank">webpack</a></li>
+  </ul>
+</li>-->
+<!--<li class="nav-dropdown-container language">
+  <a class="nav-link">Translations</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://cn.vuejs.org/" class="nav-link" target="_blank">中文</a></li>
+    <li><a href="https://jp.vuejs.org/" class="nav-link" target="_blank">日本語</a></li>
+    <li><a href="https://ru.vuejs.org/" class="nav-link" target="_blank">Русский</a></li>
+  </ul>
+</li>
+-->
+  </ul>
+</div>
+
+        
+            <div id="main" class="fix-sidebar">
+                
+                    
+    <div class="sidebar">
+    <ul class="main-menu">
+        <li>
+  <form id="search-form">
+    <input type="text" id="search-query-sidebar" class="search-query st-default-search-input">
+  </form>
+</li>
+<li><a href="/study/java/" class="nav-link current">java</a></li>
+<li><a href="/study/linux/" class="nav-link">linux</a></li>
+<li><a href="/study/nodejs/" class="nav-link">nodejs</a></li>
+<li><a href="/about/" class="nav-link">参与贡献</a></li>
+<li class="nav-dropdown-container">
+  <a class="nav-link">其他</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://github.com/CleverFan" class="nav-link" target="_blank">GitHub</a></li>
+    <li><a href="http://blog.csdn.net/qq_31655965" class="nav-link" target="_blank">csdn</a></li>
+    <li><a href="http://www.improvecfan.cn" class="nav-link" target="_blank">博客</a></li>
+
+  </ul>
+</li>
+
+<!--<li class="nav-dropdown-container ecosystem">
+  <a class="nav-link">生态系统</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><h4>帮助</h4></li>
+    <li><ul>
+      <li><a href="http://forum.vuejs.org" class="nav-link" target="_blank">论坛</a></li>
+      <li><a href="https://gitter.im/vuejs/vue" class="nav-link" target="_blank">聊天室</a></li>
+      <li><a href="https://github.com/vuejs-templates" class="nav-link" target="_blank">模板</a></li>
+    </ul></li>
+    <li><h4>信息</h4></li>
+    <li><ul>
+      <li><a href="https://twitter.com/vuejs" class="nav-link" target="_blank">Twitter</a></li>
+      <li><a href="https://medium.com/the-vue-point" class="nav-link" target="_blank">博客</a></li>
+      <li><a href="https://vuejobs.com/?ref=vuejs" class="nav-link" target="_blank">工作</a></li>
+    </ul></li>
+    <li><h4>核心插件</h4></li>
+    <li><ul>
+      <li><a href="https://router.vuejs.org/" class="nav-link" target="_blank">Vue Router</a></li>
+      <li><a href="https://vuex.vuejs.org/" class="nav-link" target="_blank">Vuex</a></li>
+    </ul></li>
+    <li><h4>资源列表</h4></li>
+    <li><ul>
+      <li><a href="https://github.com/vuejs" class="nav-link" target="_blank">官方仓库</a></li>
+      <li><a href="https://github.com/vuejs/awesome-vue" class="nav-link" target="_blank">Vue 资源</a></li>
+    </ul></li>
+    <li><h4>其它</h4></li>
+    <li><a href="https://webpack.vuefe.cn" target="_blank">webpack</a></li>
+  </ul>
+</li>-->
+<!--<li class="nav-dropdown-container language">
+  <a class="nav-link">Translations</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="https://cn.vuejs.org/" class="nav-link" target="_blank">中文</a></li>
+    <li><a href="https://jp.vuejs.org/" class="nav-link" target="_blank">日本語</a></li>
+    <li><a href="https://ru.vuejs.org/" class="nav-link" target="_blank">Русский</a></li>
+  </ul>
+</li>
+-->
+    </ul>
+    <div class="list">
+        <div class="main-sponsor">
+            <span>赞助者</span><br>
+            <a href="#" target="_blank"
+                style="background-color: #f3f3f3; padding: 10px 0">
+                <img src="/images/github.png">
+            </a>
+        </div>
+        <a class="become-backer" href="/support-me">
+            成为赞助者
+        </a>
+        <h2>
+            
+            <!---->
+                <!--<select class="version-select">-->
+                    <!--<option value="SELF" selected>2.0</option>-->
+                    <!--<option value="v1">1.0</option>-->
+                    <!--<option value="012">0.12</option>-->
+                    <!--<option value="011">0.11</option>-->
+                <!--</select>-->
+            <!---->
+        </h2>
+        <ul class="menu-root">
+            
+                
+
+                
+                
+                <li>
+                    <a href="/study/java/index.html" class="sidebar-link">开始</a>
+                </li>
+            
+                
+
+                
+                
+                <li>
+                    <a href="/study/java/zero.html" class="sidebar-link">万物皆对象（上）</a>
+                </li>
+            
+                
+
+                
+                
+                <li>
+                    <a href="/study/java/one.html" class="sidebar-link">万物皆对象(下)</a>
+                </li>
+            
+                
+
+                
+                
+                <li>
+                    <a href="/study/java/two.html" class="sidebar-link current">封装</a>
+                </li>
+            
+                
+
+                
+                
+                <li>
+                    <a href="/study/java/three.html" class="sidebar-link">继承</a>
+                </li>
+            
+            
+        </ul>
+    </div>
+</div>
+
+
+<div class="content javaImprove with-sidebar two-javaImprove">
+    
+      <h1>封装</h1>
+    
+    
+    <blockquote>
+<p>如果你认为封装仅仅是private + getter and setter，那你就大错特错了！</p>
+</blockquote>
+<h2 id="什么是封装"><a href="#什么是封装" class="headerlink" title="什么是封装"></a><strong>什么是封装</strong></h2><p>对于面向对象的特点，我想大家都可以倒背如流了：封装，继承，多态。很多人对这些特点的理解仅仅停留在表面。以为封装就是变量私有化，然后对外提供接口，而不知为什么要这样做。</p>
+<p>封装，简单的来讲就是将变量的属性私有化，在java里就是用private修饰符修饰，这样在外部产生的对象就不能直接访问到这个变量。想要对变量进行操作或者访问，就需要在类里提供外部访问的接口，也就是我们熟知的get和set方法。</p>
+<p>这就是大部分人对封装的理解。知道有封装这回事，知道怎么用，却不知道为什么要用，甚至觉得这是多此一举。因为明明<code>person.name</code>就可以访问到变量，为什么非要<code>person.getName()</code>呢？</p>
+<h2 id="任性的使用public"><a href="#任性的使用public" class="headerlink" title="任性的使用public"></a><strong>任性的使用public</strong></h2><p>我们先来看一下不使用封装的情况。</p>
+<p>首先，有两个类，Man和Women:</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">//Man</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Man</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> String name; <span class="comment">//名字</span></div><div class="line">    <span class="keyword">public</span> Woman wife;  <span class="comment">//男人嘛，都有妻子</span></div><div class="line">    <span class="keyword">public</span> <span class="keyword">double</span> money;<span class="comment">//男人嘛，多赚点钱</span></div><div class="line"></div><div class="line">	<span class="comment">//还可以结个婚</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">marry</span><span class="params">(Woman woman)</span></span>&#123;</div><div class="line">        <span class="keyword">this</span>.wife = woman;</div><div class="line">        woman.marry(<span class="keyword">this</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">//Women</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Woman</span> </span>&#123;</div><div class="line">    <span class="keyword">public</span> String name; <span class="comment">//名字</span></div><div class="line">    <span class="keyword">public</span> Man husband; <span class="comment">//得有一个丈夫</span></div><div class="line">	<span class="comment">//也可以结个婚</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">marry</span><span class="params">(Man man)</span></span>&#123;</div><div class="line">        <span class="keyword">this</span>.husband = man;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>代码很精简，看着很舒服，测试一下。</p>
+<blockquote>
+<p><img src="http://img.blog.csdn.net/20161128181621627" alt="这里写图片描述"> </p>
+<p>哎哟，看起来还不错。</p>
+</blockquote>
+<p>这个时候，来了一个小偷，这小偷不干别的，就偷别人的钱和老婆。</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">//小偷</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Thief</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> <span class="keyword">double</span> stealMoney = <span class="number">0</span>;</div><div class="line">    <span class="keyword">private</span> List&lt;Woman&gt; womens = <span class="keyword">new</span> ArrayList&lt;&gt;();</div><div class="line"></div><div class="line">    <span class="comment">//偷钱</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">stealMoney</span><span class="params">(Man man)</span></span>&#123;</div><div class="line">        stealMoney += man.money;</div><div class="line">        man.money = <span class="number">0</span>;</div><div class="line">        System.out.println(<span class="string">"哈哈，偷到钱了"</span>);</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//偷老婆，最可气的是，偷了你的老婆还把凤姐丢给了你</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">stealWife</span><span class="params">(Man man)</span></span>&#123;</div><div class="line">        womens.add(man.wife);</div><div class="line">        Woman woman = <span class="keyword">new</span> Woman();</div><div class="line">        woman.name = <span class="string">"凤姐"</span>;</div><div class="line">        man.wife = woman;</div><div class="line">        System.out.println(<span class="string">"哈哈哈，又偷了一个妹纸"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>有一天，来了这么一个小偷：</p>
+<blockquote>
+<p><img src="http://img.blog.csdn.net/20161128182205942" alt="这里写图片描述"></p>
+<p>傻了吧？你老婆呢？你钱呢？哈哈哈哈哈哈哈哈哈</p>
+</blockquote>
+<p>就这样，小偷偷走了你的钱和你的老婆并丢给了你一个凤姐，而你，却无能为力。</p>
+<p>你觉得必须要改变一下了！！</p>
+<h2 id="封装前来报到"><a href="#封装前来报到" class="headerlink" title="封装前来报到"></a><strong>封装前来报到</strong></h2><p>封装觉得你有点惨，于是过来帮了一下你：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">//PackageMan</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PackageMan</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> String name; <span class="comment">//私有化名字</span></div><div class="line">    <span class="keyword">private</span> PackageWoman wife;<span class="comment">//必须私有！！必须！</span></div><div class="line">    <span class="keyword">private</span> <span class="keyword">double</span> money; <span class="comment">//私有，统统私有！</span></div><div class="line">    <span class="comment">//我们先写个构造函数，为了方便</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">PackageMan</span><span class="params">(String name, <span class="keyword">double</span> money)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.name = name;</div><div class="line">        <span class="keyword">this</span>.money = money;</div><div class="line">    &#125;</div><div class="line">    <span class="comment">//结婚</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">marry</span><span class="params">(PackageWoman woman)</span></span>&#123;</div><div class="line">        <span class="keyword">this</span>.wife = woman;</div><div class="line">        woman.marry(<span class="keyword">this</span>);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="comment">//各种getter和setter</span></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.name = name;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> name;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> PackageWoman <span class="title">getWife</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> wife;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getMoney</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> money;</div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">//PackageWoman</span></div><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">PackageWoman</span> </span>&#123;</div><div class="line">    <span class="keyword">private</span> String name;</div><div class="line">    <span class="keyword">private</span> PackageMan husband;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">marry</span><span class="params">(PackageMan man)</span></span>&#123;</div><div class="line">        <span class="keyword">this</span>.husband = man;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">PackageWoman</span><span class="params">(String name)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.name = name;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> String <span class="title">getName</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> name;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> PackageMan <span class="title">getHusband</span><span class="params">()</span> </span>&#123;</div><div class="line">        <span class="keyword">return</span> husband;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setName</span><span class="params">(String name)</span> </span>&#123;</div><div class="line">        <span class="keyword">this</span>.name = name;</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>看起来有点眼花缭乱，这样真的有效么？</p>
+<blockquote>
+<p><img src="http://img.blog.csdn.net/20161128183404652" alt="这里写图片描述"></p>
+<p>恩，看起来还行，就是代码长了点，赶紧给我来个小偷测试一下！</p>
+</blockquote>
+<p>什么？你想测试一下，不好意思，测试不了，因为小偷已经死在测试的路上了。因为我们根本没有对外提供设置money和wife的方法，所以小偷可以知道你有多少钱，知道你有一个漂亮的老婆，但是他却无能为力，因为他只能看着。</p>
+<p>细心的人也许发现了，这里面有一个很严重的问题：</p>
+<p>没错，小偷不能把我们的money清空了，也不能将我们的wife换成别人了。但是，如果我们要自己换呢？我的钱这辈子就这么点？还不能花？我还不能离婚了？（咳咳。。不鼓励离婚哈，就是举个例子，别打我）</p>
+<h2 id="这才是封装厉害的地方"><a href="#这才是封装厉害的地方" class="headerlink" title="这才是封装厉害的地方"></a><strong>这才是封装厉害的地方</strong></h2><p>如何解决上面的问题呢？私有化外部访问不到，自己也没法改变数据，提供set方法又会让所有人都能改，和不私有没什么区别，好纠结啊。</p>
+<p>等等，你刚刚说 “所有人“？真的是所有人么？</p>
+<p>我们来看看：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setMoney</span><span class="params">(PackageMan man,<span class="keyword">double</span> money)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (man == <span class="keyword">this</span>) &#123;</div><div class="line">        <span class="keyword">this</span>.money = money;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        System.out.println(<span class="string">"喂，110吗？"</span>+man.getName()+<span class="string">"抢钱！"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样呢？只有你自己可以修改，别人都不可以，测试一下：</p>
+<blockquote>
+<p><img src="http://img.blog.csdn.net/20161128184912423" alt="这里写图片描述"> </p>
+<p>这样就可以了，自己可以修改，但是别人不可以。</p>
+</blockquote>
+<p>但是你老婆不满意了，凭什么只有你自己能改？我也想改！</p>
+<p>这种要求，还是应该满足一下的，怎么做呢？</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setMoney</span><span class="params">(Object o,<span class="keyword">double</span> money)</span> </span>&#123;</div><div class="line">    <span class="keyword">if</span> (o == <span class="keyword">this</span> || o == <span class="keyword">this</span>.wife) &#123;</div><div class="line">        <span class="keyword">this</span>.money = money;</div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        System.out.println(<span class="string">"喂，110吗？有人抢钱！"</span>);</div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这样就可以了。</p>
+<p>当然，爱思考的人肯定发现了，我把抢钱的那句话修改了，没有获取修改人的名字，因为传入的是Objects对象。当然，你也可以再写点代码，判断一下传进来的是什么，然后抢转为相应的类型，再调用相应的方法。</p>
+<p>除此之外，就没有别的办法了么？当然有，具体怎么做，我们下一篇文章再做分解。下一篇文章《重新认识java（三） —- 面向对象之继承》不定期更新。</p>
+<blockquote>
+<p>仔细思考一下你会发现，我特么竟然是在骗你！因为当你提供了set函数以后，小偷又可以偷你的东西了。仔细看一下之前小偷是怎么偷你东西的你就知道了。</p>
+<p>没错，就是通过你自己。小偷通过你自己改变了你自己。听起来有点扯，但是事实上就是这样的。</p>
+<p>那么，有没有一种办法让小偷在只得到”你自己“的情况下怎么样都不能改变“你的属性值”，而只有你自己能改变呢？</p>
+<p>大家可以自己想想，具体的解决办法，我们在之后的文章里揭晓。敬请期待。</p>
+</blockquote>
+<h2 id="总结一下"><a href="#总结一下" class="headerlink" title="总结一下"></a><strong>总结一下</strong></h2><p>以上就是面向对象的封装，封装不仅仅只是private + getter and setter。使用封装可以对setter进行更深层次的定制。你可以对可以执行setter方法的对象做规定，也可以对数据作要求，还可以做类型转换等等一系列你可以想到的。</p>
+<p>使用封装不仅仅是安全，更可以简化操作。不要觉得用了封装多了好多代码，看起来乱糟糟的。这只是因为我举得例子太小了。如果你写你个大的系统，一开始你的这样定义类的</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">int</span> age;</div></pre></td></tr></table></figure>
+<p>你的程序里大概有100处这样的语句：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line">p.age = <span class="number">10</span>;</div></pre></td></tr></table></figure>
+<p>这个时候，突然要求你把数据类型变了，改成：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> String age;</div></pre></td></tr></table></figure>
+<p>你是不是要把那100处数据都加个双引号呢？这是不是很麻烦？</p>
+<p>如果你用了封装，你只需要这样：</p>
+<figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">setAge</span><span class="params">(<span class="keyword">int</span> age)</span></span>&#123;</div><div class="line">	<span class="keyword">this</span>.age = String.valueOf(age);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>然后就搞定了，是不是简化了操作？</p>
+<p>我只是举个例子，实际开发中也不会出现改变数据类型这么操蛋的事。。</p>
+<p>封装还有一个好处是模块化。当你参与一个很多人实现的大型系统中，你不可能知道所有的类是怎样实现的。你只需要知道这个类给我提供了哪些方法，我需要传入什么数据，我能得到什么结果。至于怎么得到的，关我x事？</p>
+<p>所以说，如果你写的代码还没有用封装，改过来吧。不是因为大家都用所以你也应该用，而是这确实可以给你提供极大的便利。</p>
+<p>结束~</p>
+<hr>
+<p>本文同步更新在 ： blog.clevercfan.cn<br>有什么疑问或者错误可以给我留言</p>
+<p>下篇文章见~</p>
+
+
+      <div class="guide-links">
+        
+        <span>← <a href="/study/java/one.html">万物皆对象(下)</a></span>
+        
+        
+        <span style="float:right"><a href="/study/java/three.html">继承</a> →</span>
+        
+    </div>
+
+    <div class="footer">
+      发现错误？想参与编辑？
+      <a href="https://github.com/CleverFan/CleverFan.github.io/blob/2.0-cn/src/study/java/two.md" target="_blank">
+        在 Github 上编辑此页！
+      </a>
+    </div>
+</div>
+
+                
+            </div>
+            <script src="/js/smooth-scroll.min.js"></script>
+        
+
+        <!-- main custom script for sidebars, version selects etc. -->
+        <script src="/js/common.js"></script>
+
+        <!-- ga -->
+        <script>
+          (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+          (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+          })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+          ga('create', 'UA-46852172-1', 'vuefe.cn');
+          ga('send', 'pageview');
+        </script>
+
+        <!-- search -->
+        <link href="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css" rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="/css/search.css">
+        <script src="//cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script>
+        <script>
+//        [
+//          '#search-query-nav',
+//          '#search-query-sidebar'
+//        ].forEach(function (selector) {
+//          if (!document.querySelector(selector)) return
+//          // search index defaults to v2
+//          var match = window.location.pathname.match(/^\/(v\d+)/)
+//          var version = match ? match[1] : 'v2'
+//          docsearch({
+//            appId: 'BH4D9OD16A',
+//            apiKey: '85cc3221c9f23bfbaa4e3913dd7625ea',
+//            indexName: 'vuejs',
+//            inputSelector: selector,
+//            algoliaOptions: { facetFilters: ["version:" + version] }
+//          })
+//        })
+        </script>
+
+        <!-- fastclick -->
+        <script src="//cdnjs.cloudflare.com/ajax/libs/fastclick/1.0.6/fastclick.min.js"></script>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+          FastClick.attach(document.body)
+        }, false)
+        </script>
+    </body>
+</html>
